@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  RefreshControl,
 } from 'react-native';
 import React, {useState} from 'react';
 import {useEffect} from 'react';
@@ -200,6 +201,15 @@ const MainScreen = props => {
           />
         )}
         contentContainerStyle={{alignItems: 'center'}}
+        refreshControl={
+          <RefreshControl
+            refreshing={userInfo?.loading}
+            onRefresh={() => dispatch(getUserInfo())}
+            colors={['red']}
+            tintColor={'red'}
+            progressBackgroundColor={'red'}
+          />
+        }
       />
       {isAddUserShow && addUserView()}
       {addUserButton()}
